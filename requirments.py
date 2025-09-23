@@ -21,3 +21,10 @@ def filter_by_student_id(studentId, list_of_submissions):
     if not list_of_submissions:
         return []
     return [ submission for submission in list_of_submissions if submission.get("studentId") == studentId]
+
+def find_unsubmitted(due_date, student_names, list_of_submissions):
+    if not student_names:
+        return []
+    submitted_today = {submission.get("studentName") for submission in(list_of_submissions or []) if submission.get("submissionDate") == due_date}
+
+    return [name for name in student_names if name not in submitted_today]
