@@ -142,4 +142,4 @@ def get_average_score_by_module(submissions: list[dict]):
     total = 0
     for submission in scores_by_module:
         total += scores_by_module.get(quiz_score)
-        return total / len(submissions)
+        return total / len(scores_by_module)
