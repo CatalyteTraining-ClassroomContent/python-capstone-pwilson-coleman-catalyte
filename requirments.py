@@ -140,10 +140,6 @@ def get_average_score_by_module(submissions: list[dict]):
         else:
             scores_by_module[quiz_module] = [quiz_score]
     total = 0
-    for quiz_score in scores_by_module:
-        
-{
-    "Python Functions" : [85, 92, 77],
-    "Python Loops": [88, 79, 95], 
-
-}
+    for submission in scores_by_module:
+        total += scores_by_module.get(quiz_score)
+        return total / len(submissions)
