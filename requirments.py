@@ -3,7 +3,7 @@ def filter_by_date(due_date, submissions):
     Filter submissions by a specific due date.
     
     Args:
-        due_date: The target due date to filter by (expected to match submission_date format)
+        due_date (str): The target due date to filter by (expected to match submission_date format)
         submissions (list): List of submission dictionaries, each containing a 'submission_date' key
     
     Returns:
@@ -24,8 +24,8 @@ def filter_by_student_id(student_id, submissions):
     Filter submissions by a specific student ID.
     
     Args:
-        student_id: The target student ID to filter by
-        submissions (list): List of submission dictionaries, each containing a 'student_id' key
+        student_id (int): The target student ID to filter by
+        submissions (dict): List of submission dictionaries, each containing a 'student_id' key
     
     Returns:
         list: List of submissions that match the specified student ID. Returns empty list if no submissions provided.
@@ -42,8 +42,8 @@ def find_unsubmitted(due_date, student_names, submissions):
     
     Args:
         due_date (str): The due date to check submissions against
-        student_names (list[str]): List of all student names to check
-        submissions (list[dict]): List of submission dictionaries containing 'submission_date' and 'student_name' keys
+        student_names (str): List of all student names to check
+        submissions (dict): List of submission dictionaries containing 'submission_date' and 'student_name' keys
     
     Returns:
         list[str]: List of student names who have not submitted by the due date
@@ -67,7 +67,7 @@ def get_average_score(submissions):
     Calculate the average quiz score across all submissions.
     
     Args:
-        submissions (list[dict]): List of submission dictionaries, each containing a 'quiz_score' key
+        submissions (dict): List of submission dictionaries, each containing a 'quiz_score' key
     
     Returns:
         float: Average quiz score across all submissions
@@ -84,7 +84,7 @@ def get_average_score_by_module(submissions):
     Calculate average quiz scores grouped by module.
     
     Args:
-        submissions (list[dict]): List of submission dictionaries containing 'quiz_module' and 'quiz_score' keys
+        submissions (dict): List of submission dictionaries containing 'quiz_module' and 'quiz_score' keys
     
     Returns:
         dict: Dictionary mapping module names to their average scores.
