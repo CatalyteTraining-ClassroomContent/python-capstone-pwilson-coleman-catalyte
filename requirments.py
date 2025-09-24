@@ -1,30 +1,41 @@
-class Submission:
+submissions = {
+"quiz_name": "string",
+"quiz_module": "string",
+"quiz_score": int,
+"student_id": int,
+"student_name": "string",
+"submission_date": "string"
+}
 
-    def __init__(self, quizName, quizModule, quizScore, studentId, studentName, submissionDate):
-        self.quizName = quizName
-        self.quizModule = quizModule
-        self.quizScore = quizScore
-        self.studentId = studentId
-        self.studentName = studentName
-        self.submissionDate = submissionDate
-
-def filter_by_date(due_date, list_of_submissions):
-    if not list_of_submissions:
+def filter_by_date(due_date, submissions):
+    if not submissions:
         return []
     matching_submissions = [
-        submission for submission in list_of_submissions if submission.get("submissionDate") == due_date
+        submission for submission in submissions if submission.get("submission_date") == due_date
     ]
 
     return matching_submissions
 
-def filter_by_student_id(studentId, list_of_submissions):
-    if not list_of_submissions:
+def filter_by_student_id(student_id, submissions):
+    if not submissions:
         return []
-    return [ submission for submission in list_of_submissions if submission.get("studentId") == studentId]
+    return [submission for submission in submissions if submission.get("student_id") == student_id]
 
-def find_unsubmitted(due_date, student_names, list_of_submissions):
+
+def find_unsubmitted(due_date:str, student_names: list[str], submissions: list[dict]):
     if not student_names:
         return []
-    submitted_today = {submission.get("studentName") for submission in(list_of_submissions or []) if submission.get("submissionDate") == due_date}
+    filtered_submissions = filter_by_date(due_date, submissions)
+    unsubmitted_students = student_names
 
-    return [name for name in student_names if name not in submitted_today]
+    for submission in filtered_submissions:
+        student_name = submission.get("student_name")
+        if student_name in student_names:
+            unsubmitted_students.remove(student_name)
+    return unsubmitted_students
+
+def get_average_score(submissions:list[dict]):
+    total = 0
+    for submission in submissions:
+        total += submission.get("quiz_score")
+    return total / len(submissions)
