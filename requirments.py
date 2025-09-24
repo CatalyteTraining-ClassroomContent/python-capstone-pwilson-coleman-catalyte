@@ -7,6 +7,92 @@ submissions = {
 "submission_date": "string"
 }
 
+submissions = [
+    {
+        "quiz_name": "Functions Quiz",
+        "quiz_module": "Python Functions",
+        "quiz_score": 85,
+        "student_id": 1,
+        "student_name": "Alice Johnson",
+        "submission_date": "2025-09-20"
+    },
+    {
+        "quiz_name": "Functions Quiz",
+        "quiz_module": "Python Functions",
+        "quiz_score": 92,
+        "student_id": 2,
+        "student_name": "Brian Davis",
+        "submission_date": "2025-09-20"
+    },
+    {
+        "quiz_name": "Functions Quiz",
+        "quiz_module": "Python Functions",
+        "quiz_score": 77,
+        "student_id": 3,
+        "student_name": "Catherine Green",
+        "submission_date": "2025-09-21"
+    },
+    {
+        "quiz_name": "Loops Quiz",
+        "quiz_module": "Python Loops",
+        "quiz_score": 88,
+        "student_id": 1,
+        "student_name": "Alice Johnson",
+        "submission_date": "2025-09-21"
+    },
+    {
+        "quiz_name": "Loops Quiz",
+        "quiz_module": "Python Loops",
+        "quiz_score": 79,
+        "student_id": 2,
+        "student_name": "Brian Davis",
+        "submission_date": "2025-09-21"
+    },
+    {
+        "quiz_name": "Loops Quiz",
+        "quiz_module": "Python Loops",
+        "quiz_score": 95,
+        "student_id": 3,
+        "student_name": "Catherine Green",
+        "submission_date": "2025-09-22"
+    },
+    {
+        "quiz_name": "Data Types Quiz",
+        "quiz_module": "Python Basics",
+        "quiz_score": 82,
+        "student_id": 1,
+        "student_name": "Alice Johnson",
+        "submission_date": "2025-09-19"
+    },
+    {
+        "quiz_name": "Data Types Quiz",
+        "quiz_module": "Python Basics",
+        "quiz_score": 74,
+        "student_id": 2,
+        "student_name": "Brian Davis",
+        "submission_date": "2025-09-19"
+    },
+    {
+        "quiz_name": "Data Types Quiz",
+        "quiz_module": "Python Basics",
+        "quiz_score": 90,
+        "student_id": 3,
+        "student_name": "Catherine Green",
+        "submission_date": "2025-09-19"
+    },
+    {
+        "quiz_name": "Variables Quiz",
+        "quiz_module": "Python Basics",
+        "quiz_score": 87,
+        "student_id": 1,
+        "student_name": "Alice Johnson",
+        "submission_date": "2025-09-18"
+    }
+]
+
+
+
+
 def filter_by_date(due_date, submissions):
     if not submissions:
         return []
@@ -39,3 +125,14 @@ def get_average_score(submissions:list[dict]):
     for submission in submissions:
         total += submission.get("quiz_score")
     return total / len(submissions)
+
+def get_average_score_by_module(submissions: list[dict]):
+    if not submissions:
+        return {}
+    
+    scores_by_module = {}
+    for submission in submissions:
+        quiz_module = submission.get("quiz_module")
+        quiz_score = submission.get("quiz_score")
+        
+         
