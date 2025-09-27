@@ -145,3 +145,14 @@ def test_find_unsubmitted_empty_student_names_empty_list(submission_data):
 
 def test_unsubmitted_empty_submissions_empty_list():
     assert find_unsubmitted("2025-09-17", ["Alice Johnson"], []) == []
+
+def test_find_unsubmitted_all_submitted_returns_empty(submission_data):
+    everyone = ["Alice Johnson", "Brian Davis", "Catherine Green"]
+    assert find_unsubmitted("2025-09-19", everyone, submission_data) == []
+
+def test_average_score_single_submission(submission_data):
+    single = [submission_data[-1]]
+    assert get_average_score(single) == 87
+
+def test_get_average_score_by_module_empty_returns_empty_dict():
+    assert get_average_score_by_module([]) == {}
